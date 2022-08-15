@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 5000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -63,14 +63,15 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-		{ cpu_perc, "[CPU %s%%]  ",   NULL  },
-		{ ram_perc, "[RAM %s%%]  ", NULL	      },
+	  { run_command, "%s  | ", "/home/permaditya/Scripts/openweather-detailed.sh" },
+		{ cpu_perc, "[CPU %s%%]  ", NULL  },
+		{ ram_perc, "[RAM %s%%]  ", NULL	},
+  	{ run_command, "[TEMP %s]  ", "/home/permaditya/Scripts/temp.sh"},
 		{ disk_free,"[HDD %sB]  | ",      "/" },
-   /* { vol_perc, "[VOL %s%]   ", "/dev/mixer" },
+	   /* { vol_perc, "[VOL %s%]   ", "/dev/mixer" },
  		/* Displays battery's capacity, you need to specify the battery folder's name listed in /sys/class/power_supply,
-     for me it's BAT0 and it'll automatically read the capacity file */
-	  { battery_perc, "[BAT %s%]  | ", "BAT0" },
-  /* Displays IPv4 address for the given network interface (which in my case is wlp3s0) in your local network */
+ 		 * for me it's BAT0 and it'll automatically read the capacity file */
+	  { run_command, "%s  | ", "/home/permaditya/Scripts/battery.sh" },
 	  { datetime, "%s","%a %b %d %R" }
 
 };
